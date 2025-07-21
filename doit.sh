@@ -11,4 +11,7 @@ else
     make
     make open
     make clean # Else just remove the aux and log outputs.
+    for f in out/*.pdf; do
+        pdftoppm -png -r 300 "$f" "${f%.pdf}"
+    done
 fi

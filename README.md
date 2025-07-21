@@ -1,35 +1,43 @@
 # State Diagram Latex Template
 _How I create PDF diagrams on Mac._
 
-## Required
-Assuming you already have brew
+The sample [out/sample.pdf](out/sample.pdf) is of a state diagram of an NFSA from a tutorial worksheet.
 
-1. Install BasicTeX
+<img src="out/sample-1.png" width="500"/>
+
+---
+
+## Required
+Assuming you already have brew setup...
+
+**1. Install BasicTeX**
 ```bash
 brew install --cask basictex
 ```
 
-2. Add it to PATH
+**2. Add it to PATH**
 The path you need to provide should be `/Library/TeX/texbin`
 
 I like to edit my PATH variable in _~/.bashrc_ to avoid messy PATH settings.
 If you're having issues, it could be due to the order your PATH is set. I've noticed this to be an issue for some brew packages.
 
-3. Update tlmgr
+**3. Update `tlmgr`**
 ```bash
 sudo tlmgr update --self
 ```
 _This should have downloaded with BasicTeX. It needs full system permissions, so only install trusted packages._
 
-3. Get the standalone package for previewing
+**3. Get the standalone package for previewing**
 ```bash
 sudo tlmgr install standalone preview
 ```
 
-4. Give the script _doit.sh_ permission to run
-```bash
-chmod +x doit.sh
+**4. Install `poppler` to convert to images**
 ```
+brew install poppler
+```
+
+---
 
 ## Usage
 You can just use the Makefile to `make`, `make clean`, and `make clean-all`.
@@ -42,17 +50,17 @@ The script _doit.sh_ is really just to streamline my own processes across projec
 echo 'alias doit="./doit.sh" >> ~/.bash_aliases.sh'
 chmod +x doit.sh
 ```
-Yeah ik ik...
+_Yeah ik ik..._
 
-2. Doit
+**2. Doit**
 ```bash
 doit
 ```
-The above will open the PDF in preview after making it, as well as clean the output directory. You can also use `doit clean` to remove the PDF as well.
+The above will **open the PDF** in preview after making it, as well as remove the build stuff the output directory. To remove the PDF as well, used `doit clean`.
 
 #### Option B
 
-1. Make
+**1. Make**
 ```bash
 make
 make open
