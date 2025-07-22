@@ -1,8 +1,9 @@
 # Makefile
 # Compiles the TEX file and opens the output PDF.
 
-SRC = src
-OUT = out
+PRV = private
+SRC = src/$(PRV)
+OUT = out/$(PRV)
 TEX = $(wildcard $(SRC)/*.tex)
 PDF = $(patsubst $(SRC)/%.tex, $(OUT)/%.pdf, $(TEX))
 

@@ -12,6 +12,11 @@ else
     make open
     make clean # Else just remove the aux and log outputs.
     for f in out/*.pdf; do
-        pdftoppm -png -r 300 "$f" "${f%.pdf}"
+        png="${f%.pdf}-1.png"
+        if [ -f "$png" ]; then
+            echo "Skipping ${png}, already exists."
+        else
+            pdftoppm -png -r 300 "$f" "${f%.pdf}"
+        fi
     done
 fi
